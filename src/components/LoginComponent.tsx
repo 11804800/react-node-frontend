@@ -1,4 +1,9 @@
+import { useNavigate } from "react-router-dom"
+
 function LoginComponent() {
+
+  const route=useNavigate();
+
   return (
     <div className="container">
       <div className="side-container">
@@ -48,7 +53,7 @@ function LoginComponent() {
               <p className="comment">
                 Need an account?
               </p>
-              <button className="create-new-acc-btn">Create One</button>
+              <button className="create-new-acc-btn" onClick={()=>route("/signup")}>Create One</button>
             </div>
           </div>
         </div>

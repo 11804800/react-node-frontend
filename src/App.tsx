@@ -14,12 +14,10 @@ function App() {
 
   console.log(User);
   return (
-    <>
       <Routes>
         <Route path='/' element={User ? <HomePage /> : <LoginComponent />} />
         <Route path='/signup' element={<SignupComponent />} />
       </Routes>
-    </>
   )
 }
 

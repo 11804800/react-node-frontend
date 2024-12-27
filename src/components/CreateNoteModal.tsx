@@ -1,11 +1,12 @@
-import { FaTimes } from "react-icons/fa";
-function EditNote({setEditNoteModalActive}:{setEditNoteModalActive:any}) {
-  return (
+import { FaTimes } from "react-icons/fa"
+
+function CreateNoteModal({setCreateNoteModalActive}:{setCreateNoteModalActive:any}) {
+    return (
         <div className='create-note-modal-container inter'>
             <div className="Create-note-form-container">
                 <div className="flex-row" style={{ justifyContent: "space-between" }}>
-                    <h3 className="font-medium">Edit Note</h3>
-                    <button className="close-btn" onClick={()=>setEditNoteModalActive(false)}><FaTimes size={23}/></button>
+                    <h3 className="font-medium">Create New Note</h3>
+                    <button className="close-btn" onClick={()=>setCreateNoteModalActive(false)}><FaTimes size={23}/></button>
                 </div>
                 <div className="create-note-form">
                     <div className="input-container">
@@ -18,7 +19,7 @@ function EditNote({setEditNoteModalActive}:{setEditNoteModalActive:any}) {
                 </div>
             </div>
         </div>
-  )
+    )
 }
 
-export default EditNote;
+export default CreateNoteModal

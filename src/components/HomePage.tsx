@@ -7,7 +7,6 @@ function HomePage() {
     return state.user.user
   });
 
-  console.log(User);
   return (
     <div>
       Homrpage

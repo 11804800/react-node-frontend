@@ -1,8 +1,49 @@
+import axios from "axios";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom"
+import { setToken, setUserName } from "../store/User";
+import { BsEye } from "react-icons/bs";
+import { FiEyeOff } from "react-icons/fi";
 
 function LoginComponent() {
 
-  const route=useNavigate();
+  const route = useNavigate();
+  const dispatch = useDispatch();
+  const [err,setError]=useState("");
+
+  const [showOTP, setShowOTP] = useState("password");
+  const [user, setUser] = useState({
+    email: "",
+    otp: ""
+  });
+
+  function OnInputChange(e: any) {
+    setUser((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  }
+
+  function OnFormSubmit() {
+    const body = {
+      email: user.email,
+      otp:user.otp
+    }
+    axios.post("http://localhost:3000/users/login", body).then((response) => {
+      dispatch(setToken(response.data?.token));
+      dispatch(setUserName(user.email));
+      localStorage.setItem("token", JSON.stringify(response.data?.token));
+      localStorage.setItem("username", JSON.stringify(user.email));
+      route("/");
+    }, (err) =>{
+      if(err.status==404)
+      {
+        setError("No User Not Found!");
+      }
+      else if(err.status==401)
+      {
+        setError("UserName Or Otp is Not Correct");
+      }
+    }).catch((err) => console.log(err.message));
+  }
 
   return (
     <div className="container">
@@ -20,12 +61,18 @@ function LoginComponent() {
           </div>
           <div className="form">
             <div className="input-container">
-              {/* <label className="input-label">Email</label> */}
-              <input type="text" placeholder="Email" />
+              <input type="text" name="email" onChange={OnInputChange} required />
+              <div className="input-label">Email</div>
             </div>
-            <div className="input-container">
-              {/* <label className="input-label">OTP</label> */}
-              <input type="text" placeholder="OTP" />
+            <div className="input-container" style={{ padding: "0px 8px" }}>
+              <input type={showOTP} name="otp" onChange={OnInputChange} required />
+              <div className="input-label">OTP</div>
+              {
+                showOTP === "password" ?
+                  <FiEyeOff size={23} onClick={() => { setShowOTP("text") }} /> :
+                  <BsEye size={23} onClick={() => { setShowOTP("password") }} />
+              }
+
             </div>
             <div className="flex-col">
               <button className="forgot-pwd-btn">Forgot password?</button>
@@ -35,7 +82,7 @@ function LoginComponent() {
               </div>
             </div>
             <div className="flex-row">
-              <button className="Submit-btn ">
+              <button className="Submit-btn" onClick={OnFormSubmit}>
                 Sign In
               </button>
             </div>
@@ -53,7 +100,7 @@ function LoginComponent() {
               <p className="comment">
                 Need an account?
               </p>
-              <button className="create-new-acc-btn" onClick={()=>route("/signup")}>Create One</button>
+              <button className="create-new-acc-btn" onClick={() => route("/signup")}>Create One</button>
             </div>
           </div>
         </div>

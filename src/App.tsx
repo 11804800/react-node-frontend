@@ -8,8 +8,8 @@ import LoginComponent from './components/LoginComponent'
 
 function App() {
 
-  const User: string[] = useSelector((state: RootState) => {
-    return state.user.user
+  const User: string | null = useSelector((state: RootState) => {
+    return state.user.username
   });
 
   console.log(User);

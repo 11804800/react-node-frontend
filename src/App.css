@@ -14,8 +14,15 @@
 
 /* Reusable classes */
 
-.blue-btn
-{
+
+.not-visible{
+  visibility: hidden;
+}
+.hidden{
+  display: none;
+}
+
+.blue-btn {
   background: #367AFF;
   display: flex;
   justify-content: center;
@@ -30,24 +37,23 @@
   font-size: 14px;
 }
 
-.flex-col
-{
+.flex-col {
   display: flex;
   flex-direction: column;
   width: 100%;
   padding: 4px;
   gap: 10px;
 }
-.flex-row
-{
+
+.flex-row {
   display: flex;
   gap: 4px;
   padding: 4px;
   width: 100%;
   position: relative;
 }
-.flex-end
-{
+
+.flex-end {
   display: flex;
   gap: 4px;
   padding: 4px;
@@ -55,8 +61,7 @@
   justify-content: end;
 }
 
-.google-btn
-{
+.google-btn {
   border: 1px solid black;
   background-color: transparent;
   outline: none;
@@ -67,36 +72,35 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap:4px;
+  gap: 4px;
   font-weight: 600;
 }
 
-.font-bold
-{
+.font-bold {
   font-weight: 700;
 }
-.font-semibold
-{
+
+.font-semibold {
   font-weight: 600;
 }
-.font-medium
-{
+
+.font-medium {
   font-weight: 500;
 }
 
 
-.input-container
-{
+.input-container {
   display: flex;
-  gap:3px;
+  gap: 3px;
   border: 2px solid gray;
   justify-content: center;
   align-items: center;
   border-radius: 8px;
   padding: 2px;
+  position: relative;
 }
-.input-container input
-{
+
+.input-container input {
   padding: 12px;
   width: 100%;
   outline: none;
@@ -105,38 +109,43 @@
 }
 
 
-.input-label
-{
+
+.input-label {
   color: #928e8e;
   font-size: 14px;
-  background: #000;
-  color: white;
-  padding: 4px 12px;
+  background: #fff;
+  padding:2px 12px;
+  position: absolute;
+  left: 0;
 }
 
+.input-container input:focus + .input-label,
+.input-container input:valid + .input-label {
+  transform: translate(12px,-24px);
+  font-size: 13px;
+  padding: 2px;
+}
 
 /* For Login Component */
 
-.container
-{
+.container {
   display: flex;
-  gap:12px;
+  gap: 12px;
   padding: 4px;
   width: 100%;
   height: 100dvh;
   justify-content: space-around;
 }
 
-.form-container
-{
-  width:40%;
+.form-container {
+  width: 40%;
   height: 100%;
   padding: 4px;
   display: flex;
 }
-.form-div
-{
-  width:100%;
+
+.form-div {
+  width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -146,47 +155,41 @@
   align-items: center;
 }
 
-.form
-{
+.form {
   width: 80%;
   height: 100%;
   display: flex;
   flex-direction: column;
-  gap:18px;
+  gap: 18px;
 }
 
-.header-div
-{
+.header-div {
   display: flex;
   padding: 4px;
   width: 100%;
 }
 
-.header-img
-{
-  width:60px;
+.header-img {
+  width: 60px;
 }
 
-.title-div
-{
-  width:100%;
+.title-div {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  gap:4px;
+  gap: 4px;
   padding-top: 14px;
   padding-left: 40px;
   padding-bottom: 10px;
 }
 
-.title
-{
-  font-size:24px;
+.title {
+  font-size: 24px;
   font-weight: 600;
   color: #232323;
 }
 
-.forgot-pwd-btn
-{
+.forgot-pwd-btn {
   font-size: 14px;
   text-decoration: underline;
   color: #367AFF;
@@ -201,17 +204,15 @@
   text-decoration-thickness: 1.2px;
 }
 
-.checkbox-div
-{
+.checkbox-div {
   padding: 12px 2px;
 }
-.checkbox-div p
-{
+
+.checkbox-div p {
   font-size: 13px;
 }
 
-.Submit-btn
-{
+.Submit-btn {
   background: #367AFF;
   display: flex;
   justify-content: center;
@@ -226,33 +227,29 @@
   font-size: 14px;
 }
 
-.comment
-{
+.comment {
   color: #969696;
   font-size: smaller;
 }
 
-.line-break
-{
+.line-break {
   border: 1px solid #D9D9D9;
   position: relative;
   height: 0px;
   width: 100%;
 }
 
-.line-break-text
-{
+.line-break-text {
   position: absolute;
   background: #fff;
   padding: 4px;
-  top:6px;
+  top: 6px;
   font-size: 14px;
   font-weight: 600;
   color: #928e8e;
 }
 
-.create-new-acc-btn
-{
+.create-new-acc-btn {
   font-size: 14px;
   text-decoration: underline;
   color: #367AFF;
@@ -264,27 +261,42 @@
   text-decoration-thickness: 1.2px;
 }
 
-.side-container
-{
+.side-container {
   width: 60%;
 }
 
-.side-container-img
-{
-  width:100%;
+.side-container-img {
+  width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 18px;
 }
 
+.date-input-container {
+  display: flex;
+  gap: 12px;
+  position: relative;
+  justify-content: start;
+  align-items: center;
+  border-radius: 8px;
+  padding: 2px;
+  border: 2px solid gray;
+  padding: 12px;
+  font-size: 14px;
+}
+
+.date-input-container span {
+  color: #969696;
+  font-size: 14px;
+}
+
 
 /* for Dashboard Page */
 
-.dashboard-container
-{
+.dashboard-container {
   display: flex;
   flex-direction: column;
-  gap:12px;
+  gap: 12px;
   padding: 8px;
   width: 100%;
   height: 100dvh;
@@ -292,39 +304,34 @@
   position: relative;
 }
 
-.Nav-container
-{
+.Nav-container {
   display: flex;
-  gap:12px;
+  gap: 12px;
   height: fit-content;
   width: 100%;
   justify-content: space-between;
   padding: 8px 13px;
 }
 
-.Nav-container h1
-{
+.Nav-container h1 {
   font-size: 24px;
   font-weight: 500;
 }
 
-.logo-img
-{
+.logo-img {
   width: 30px;
   height: 30px;
 }
 
 
-.sign-out-div
-{
+.sign-out-div {
   font-weight: 600;
   display: flex;
   justify-content: end;
   padding: 4px 20px;
 }
 
-.link-btn
-{
+.link-btn {
   font-size: 14px;
   text-decoration: underline;
   color: #367AFF;
@@ -336,27 +343,24 @@
   text-decoration-thickness: 1.2px;
 }
 
-.message-container
-{
+.message-container {
   padding: 25px;
   display: flex;
   flex-direction: column;
-  gap:12px;
+  gap: 12px;
   border-radius: 12px;
-  box-shadow: 2px 1px 2px 2px rgba(0,0,0,0.1);
-  width:90%;
+  box-shadow: 2px 1px 2px 2px rgba(0, 0, 0, 0.1);
+  width: 90%;
 }
 
-.create-note-div
-{
+.create-note-div {
   display: flex;
   justify-content: center;
   width: 100%;
   padding: 6px;
 }
 
-.Note-Container
-{
+.Note-Container {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -364,93 +368,105 @@
   padding: 6px 6px;
 }
 
-.Note-List
-{
-  padding:8px;
+.Note-List {
+  padding: 8px;
   border-radius: 8px;
-  box-shadow: 2px 1px 2px 2px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.no-notes-div
-{
+.no-notes-div {
   padding: 40px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 12px;
-  width:100%;
-  height:100%;
-  
+  width: 100%;
+  height: 100%;
+
+}
+
+.note-card {
+  width: 100%;
+  padding: 12px 12px;
+  box-shadow: 2px 1px 2px 2px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.modify-btn-div {
+  display: flex;
+  gap: 12px;
 }
 
 /* Create New Note Modal */
 
-.create-note-modal-container
-{
+.create-note-modal-container {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100dvh;
-  background: rgba(0,0,0,0.3);
+  background: rgba(0, 0, 0, 0.3);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.Create-note-form-container
-{
+.Create-note-form-container {
   width: 70%;
   padding: 10px;
-  box-shadow: 2px 1px 2px 2px rgba(255,255,255,0.1);
+  box-shadow: 2px 1px 2px 2px rgba(255, 255, 255, 0.1);
   border-radius: 8px;
   background: #fff;
 }
 
-.close-btn
-{
+.close-btn {
   background-color: transparent;
   border: none;
   outline: none;
 }
 
-.create-note-form
-{
+.create-note-form {
   padding: 18px;
   display: flex;
   flex-direction: column;
-  gap:20px;
+  gap: 20px;
 }
 
 /* Media Queries */
 
 
 @media (max-width:768px) {
-  .side-container
-  {
+  .side-container {
     display: none;
   }
-  .form-container
-  {
-    width:100%;
+
+  .form-container {
+    width: 100%;
   }
-  .title-div
-  {
+
+  .title-div {
     padding-left: 0px;
     justify-content: center;
     align-items: center;
   }
-  .header-div
-  {
+
+  .header-div {
     justify-content: center;
   }
-  .form
-  {
-    width:95%;
+
+  .form {
+    width: 95%;
   }
-  .message-container,.Note-Container,.blue-btn,.Create-note-form-container
-  {
+
+  .message-container,
+  .Note-Container,
+  .blue-btn,
+  .Create-note-form-container {
     width: 100%;
   }
 

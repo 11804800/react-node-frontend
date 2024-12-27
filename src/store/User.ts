@@ -3,12 +3,26 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 
 export interface UserInterface{
     token:string | null,
-    user:string[]
+    username:string | null,
+    User:any
 }
 
+function GetToken()
+{
+    const token=localStorage.getItem("token");
+    return token ? JSON.parse(token) : "";
+}
+
+function GetUser()
+{
+    const username=localStorage.getItem("username");
+    return username ? JSON.parse(username) : "";
+}
 const initialState:UserInterface={
-    token:localStorage.getItem("token") ? localStorage.getItem("token") : "",
-    user:[]
+    
+    token:GetToken(),
+    username:GetUser(),
+    User:null
 }
 
 const UserSlice=createSlice({
@@ -18,11 +32,20 @@ const UserSlice=createSlice({
         setToken:(state,action:PayloadAction<string>)=>{
             state.token=action.payload
         },
-        setUser:(state,action:PayloadAction<string[]>)=>{
-            state.user=action.payload
+        setUserName:(state,action:PayloadAction<string>)=>{
+            state.username=action.payload
+        },
+        Logout:(state)=>{
+            state.token="";
+            state.username="";
+            localStorage.removeItem("token");
+            localStorage.removeItem("username");
+        },
+        SetUser:(state,action:PayloadAction<any>)=>{
+            state.User=action.payload
         }
     }
 });
 
-export const {setToken,setUser} = UserSlice.actions;
+export const {setToken,setUserName,Logout,SetUser} = UserSlice.actions;
 export default UserSlice.reducer;

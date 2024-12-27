@@ -13,20 +13,21 @@ const NoteSlice=createSlice({
     name:"Notes",
     initialState,
     reducers:{
-        EditNote:(state,action:PayloadAction<string>)=>{
-            console.log(action.payload);
+        EditNotes:(state,action:PayloadAction<any>)=>{
+            const {index,data}=action.payload;
+            state.values[index]=data;
         },
         DeleteNote:(state,action:PayloadAction<number>)=>{
-            console.log(action.payload);
+            state.values.splice(action.payload,1);
         },
         ShowNotes:(state,action:PayloadAction<string[]>)=>{
             state.values=action.payload
         },
-        AddNewNote:(state,action:PayloadAction<string>)=>{
-            console.log(action.payload)
+        AddNewNote:(state,action:PayloadAction<any>)=>{
+            state.values.push(action.payload);
         }
     }
 });
 
-export const {DeleteNote,EditNote,ShowNotes,AddNewNote} = NoteSlice.actions;
+export const {DeleteNote,EditNotes,ShowNotes,AddNewNote} = NoteSlice.actions;
 export default NoteSlice.reducer;
